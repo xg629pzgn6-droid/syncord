@@ -13,7 +13,7 @@ $$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$\ \$$$$$$  |$$ |      \$$$$$$$ |
            \______/ 
 ```
 
-**Syncord** is a CLI-based file synchronization and storage tool that uses **Discord** as a backend as **encrypted file storage**.
+**Syncord** is a CLI-based file synchronization and storage tool that uses **Discord** as an **encrypted file storage**.
 
 It allows you to upload files or entire directories to Discord, encrypt and partition them locally, and later download and reconstruct them securely; all through a simple command-line interface or an optional TUI dashboard.
 

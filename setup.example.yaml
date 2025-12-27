@@ -1,0 +1,4 @@
+setup:
+  bot_token: "your_bot_token"
+  encryption_key: "auto_generated_using_fernet"
+  guild_id: 1234567890123456789

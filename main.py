@@ -12,7 +12,13 @@ from core.db_manager import SQliteDB
 from core.setup import setup, set_bot_token, set_encryption_key, set_guild_id
 from default import BASE_DIR
 from core.partition import partition_file, download_file_by_path
-from core.tui import start_dashboard, show_stats
+
+# Importar TUI solo si hay display disponible
+try:
+    from core.tui import start_dashboard, show_stats
+    HAS_DISPLAY = True
+except ImportError:
+    HAS_DISPLAY = False
 
 # db = SQliteDB()
 # db.clear_database()
@@ -114,7 +120,7 @@ your data is lost!", action="store_true")
 
     dashboard_parser = subparsers.add_parser(
         "dashboard",
-        help="Open the TUI dashboard",
+        help="Open the TUI dashboard" if HAS_DISPLAY else "Open the TUI dashboard (not available in this environment)",
         description="Start the terminal user interface dashboard.",
         usage="syncord dashboard",
     )
@@ -143,7 +149,21 @@ your data is lost!", action="store_true")
         download_file(args.file_path)
 
     if args.command == "dashboard":
-        start_dashboard()
+        if HAS_DISPLAY:
+            start_dashboard()
+        else:
+            print("Error: TUI dashboard requires a display environment.")
+            print("Dashboard is not available in Docker or headless environments.")
+            print("\nAvailable commands in this environment:")
+            print("  - syncord upload <file_path>")
+            print("  - syncord download <file_path>")
+            print("  - syncord setup")
+            sys.exit(1)
 
     if args.command == "stats":
-        show_stats()
+        if HAS_DISPLAY:
+            show_stats()
+        else:
+            print("Error: Stats display requires a display environment.")
+            print("Use 'syncord --help' for available commands in this environment.")
+            sys.exit(1)

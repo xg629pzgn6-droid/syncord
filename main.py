@@ -1,5 +1,13 @@
 import argparse
 import os
+import sys
+
+# Stub for audioop module (removed in Python 3.13+)
+if 'audioop' not in sys.modules:
+    import types
+    audioop_stub = types.ModuleType('audioop')
+    sys.modules['audioop'] = audioop_stub
+
 from core.db_manager import SQliteDB
 from core.setup import setup, set_bot_token, set_encryption_key, set_guild_id
 from default import BASE_DIR

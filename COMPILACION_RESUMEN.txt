@@ -1,0 +1,73 @@
+COMPILACION PARA MULTIPLES PLATAFORMAS - RESUMEN
+================================================
+
+BINARIO YA COMPILADO:
+- syncord-macos-arm64 (20 MB)
+  Ubicación: releases/syncord-macos-arm64
+  Uso: ./releases/syncord-macos-arm64 --help
+
+SCRIPTS DISPONIBLES POR PLATAFORMA:
+
+1. macOS (ARM64 - Apple Silicon)
+   ✅ YA COMPILADO
+   Ubicación: releases/syncord-macos-arm64
+   
+2. macOS (x86_64 - Intel)
+   Necesitas: Mac Intel
+   Script: pyinstaller syncord-x86_64.spec
+   Archivo spec: syncord-x86_64.spec
+
+3. Windows (x64 - 64 bit)
+   Necesitas: Windows 64-bit
+   Script: build-windows.bat
+   Resultado: releases/syncord-windows-x64.exe
+
+4. Windows (x32 - 32 bit)
+   Necesitas: Windows 32-bit con Python 32-bit
+   Script: build-windows.bat
+   Resultado: releases/syncord-windows-x32.exe
+
+5. Linux (x64)
+   Necesitas: Linux x86_64
+   Script: ./build-linux.sh
+   Resultado: releases/syncord-linux-x64
+
+6. Linux (ARM64)
+   Necesitas: Raspberry Pi / Linux ARM64
+   Script: ./build-linux.sh
+   Resultado: releases/syncord-linux-arm64
+
+ARCHIVOS DE COMPILACION CREADOS:
+- syncord.spec                 → macOS arm64 / Linux
+- syncord-x86_64.spec          → macOS Intel
+- syncord-universal.spec       → macOS universal (no funciona aun)
+- syncord-windows.spec         → Windows
+
+SCRIPTS:
+- build-all.sh                 → Compilar en macOS actual
+- build-windows.bat            → Compilar en Windows
+- build-linux.sh               → Compilar en Linux
+
+DOCUMENTACION:
+- BUILD.md                     → Guia rapida
+- COMPILATION.md               → Guia detallada + CI/CD
+
+PASOS PARA COMPILAR EN OTRAS PLATAFORMAS:
+
+1. Descarga los archivos en la maquina de destino
+2. Ejecuta el script correspondiente:
+   - macOS: ./build-all.sh
+   - Windows: build-windows.bat
+   - Linux: ./build-linux.sh
+3. El binario se guardara en releases/
+
+LIMITACIONES:
+- No se puede compilar x86_64 desde arm64 sin librerias especiales
+- Necesitas compilar en la arquitectura de destino
+- Los binarios arm64 NO funcionan en Intel y viceversa
+
+PROXIMOS PASOS:
+- Copia los archivos spec a otras maquinas
+- Ejecuta los scripts de compilacion
+- Los binarios compilados van a releases/
+- Distribuye los binarios a tus usuarios
